@@ -8,6 +8,7 @@ from keras import backend as K
 batch_size = 100
 num_classes = 10
 epochs = 12
+tbCallBack = keras.callbacks.TensorBoard(log_dir='./logs/basic_cnn', histogram_freq=0)
 
 # input image dimensions
 img_rows, img_cols = 32, 32
@@ -56,9 +57,10 @@ model.fit(x_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           verbose=1,
-          validation_data=(x_test, y_test))
+          validation_data=(x_test, y_test),
+          callbacks=[tbCallBack])
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
-model.save('models/basic_cnn.h5')
+#model.save('models/basic_cnn.h5')
