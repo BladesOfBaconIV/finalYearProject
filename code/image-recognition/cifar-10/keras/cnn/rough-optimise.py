@@ -42,7 +42,8 @@ conv_sizes = [32, 64,]
 training_info = {}
 for batch_size, epochs, num_conv, conv_size in product(batch_sizes, num_epochs, num_conv_layers, conv_sizes):
     model_name = f'cnn_{batch_size}_{epochs}_{num_conv}_{conv_size}'
-    tbCallBack = keras.callbacks.TensorBoard(log_dir=f'/logs/rough-optimisation/{model_name}', histogram_freq=0)
+    print(model_name)
+    tbCallBack = keras.callbacks.TensorBoard(log_dir=f'./logs/rough-optimisation/{model_name}', histogram_freq=0)
 
     model = Sequential()
     model.add(Conv2D(32, kernel_size=(3, 3),
