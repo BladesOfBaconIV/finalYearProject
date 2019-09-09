@@ -34,15 +34,15 @@ print(x_test.shape[0], 'test samples')
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
-batch_sizes = [32, 64, 100,]
-num_epochs = [24, 32, 64,]
-num_conv_layers = [1, 2, 3,]
+batch_sizes = [100, 200]
+num_epochs = [64, 128]
+num_conv_layers = [2, 3,]
 conv_sizes = [32, 64,]
 
 training_info = {}
 for batch_size, epochs, num_conv, conv_size in product(batch_sizes, num_epochs, num_conv_layers, conv_sizes):
     model_name = f'cnn_{batch_size}_{epochs}_{num_conv}_{conv_size}'
-    tbCallBack = keras.callbacks.TensorBoard(log_dir=f'./logs/{model_name}', histogram_freq=0)
+    tbCallBack = keras.callbacks.TensorBoard(log_dir=f'/logs/rough-optimisation/{model_name}', histogram_freq=0)
 
     model = Sequential()
     model.add(Conv2D(32, kernel_size=(3, 3),
