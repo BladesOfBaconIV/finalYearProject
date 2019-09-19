@@ -5,6 +5,8 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as k
 import keras
 
+from os.path import abspath
+
 (X_train, y_train), (X_test, y_test) = mnist.load_data()
 
 num_train, *img_shape = X_train.shape
@@ -63,4 +65,5 @@ score = model.evaluate(X_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
-model.save('../../models/cnn.h5')
+filename = abspath('../../models/cnn.h5')
+model.save(filename)

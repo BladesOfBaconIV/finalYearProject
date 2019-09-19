@@ -5,7 +5,7 @@ from keras.datasets import cifar10
 from keras import utils
 
 # load model
-model = load_model('models/basic_cnn.h5')
+model = load_model('models/rough_cnn.h5')
 # summarize model.
 model.summary()
 # load dataset
