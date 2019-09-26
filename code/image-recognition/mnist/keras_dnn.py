@@ -36,10 +36,10 @@ dnn = KerasClassifier(build_fn=make_model,
     batch_size=128,
     verbose=0
 )
-gs = GridSearchCV(dnn, hyperparams, iid=True, verbose=2)
+gs = GridSearchCV(dnn, hyperparams, iid=True, verbose=2, cv=5)
 gs.fit(X_train, y_train)
 
 best_dnn = gs.best_estimator_
 print(best_dnn.evaluate(X_test, y_test))
 
-model.save('models/dnn.h5')
+best_dnn.save('models/dnn.h5')

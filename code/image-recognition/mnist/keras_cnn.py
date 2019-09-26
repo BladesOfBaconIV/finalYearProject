@@ -3,6 +3,8 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as k
+from keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.model_selection import GridSearchCV
 import keras
 
 from os.path import abspath
@@ -40,11 +42,10 @@ cnn = KerasClassifier(build_fn=make_model,
     batch_size=128,
     verbose=0
 )
-gs = GridSearchCV(cnn, hyperparams, iid=True, verbose=2)
+gs = GridSearchCV(cnn, hyperparams, iid=True, verbose=2, cv=5)
 gs.fit(X_train, y_train)
 
 best_cnn = gs.best_estimator_
 print(best_cnn.score(X_test, y_test))
 
-
-model.save('models/keras_cnn.h5')
+best_cnn.save('models/keras_cnn.h5')
