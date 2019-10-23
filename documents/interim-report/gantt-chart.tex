@@ -1,0 +1,55 @@
+\documentclass[]{article}
+
+\pagenumbering{gobble}
+
+\usepackage{geometry}
+ \geometry{
+ a3paper,
+ landscape,
+ left=10mm,
+ top=10mm,
+ }
+
+\usepackage{pgfgantt}
+\usepackage{rotating}
+
+
+\begin{document}
+
+
+\begin{ganttchart}[hgrid,
+		hgrid,
+		vgrid={*{6}{draw=none}, dotted},
+		x unit=2mm,
+		time slot format=isodate,
+		calendar week text={W\currentweek{}}
+	]{2019-10-21}{2020-03-29}
+	\gantttitlecalendar{year, month, week} \\
+	
+	\ganttgroup{Pneumonia Detection Problem}{2019-11-01}{2019-12-01} \\
+	\ganttbar{Explore Dataset}{2019-11-01}{2019-11-05} \\
+	\ganttbar{Research Models}{2019-11-05}{2019-11-12} \\
+	\ganttbar{Develop \& Test Models}{2019-11-12}{2019-11-28} \\
+	\ganttbar{Test \& Evaluate Final Model}{2019-11-29}{2019-11-31} \\
+	
+	\ganttgroup{Student Performance Problem}{2019-12-01}{2020-01-15} \\
+	\ganttbar{Explore Dataset}{2019-12-02}{2019-12-12} \\
+	\ganttbar{Research Models}{2019-12-13}{2019-12-23} \\
+	\ganttbar{Develop \& Test Models}{2019-12-26}{2020-01-13} \\
+	\ganttbar{Test \& Evaluate Final Model}{2020-01-14}{2020-01-15} \\
+	
+	\ganttgroup{Bitcoin Forecast Problem}{2020-01-16}{2020-02-17} \\
+	\ganttbar{Explore Dataset}{2020-01-16}{2020-01-21} \\
+	\ganttbar{Research Models}{2020-01-22}{2020-01-30} \\
+	\ganttbar{Develop \& Test Models}{2020-01-31}{2020-02-15} \\
+	\ganttbar{Test \& Evaluate Final Model}{2020-02-16}{2020-02-17} \\
+	
+	\ganttgroup{Write Up}{2019-11-05}{2020-03-01} \\
+	\ganttbar{Write Up Final Report}{2019-11-05}{2020-03-01} \\
+	\ganttmilestone{Problem 1 Write Up}{2019-12-07} \\
+	\ganttmilestone{Problem 2 Write Up}{2020-01-22} \\
+	\ganttmilestone{Problem 3 Write Up}{2020-02-24} \\
+\end{ganttchart}
+
+
+\end{document}

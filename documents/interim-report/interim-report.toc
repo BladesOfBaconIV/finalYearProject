@@ -1,0 +1,41 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction and Project Description}{5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}Introduction}{5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Project Outline}{5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Literature Survey}{7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Problem Categories}{7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Classification Problems}{7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Machine Vision}{8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Regression Problems}{8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Theory}{9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Overview of Machine Learning}{9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Artificial Neural Networks}{10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Convolutional Neural Networks}{11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Support Vector Machines}{12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Decision Trees and Random Forests}{12}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Outline Design}{15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Classification Problem 1: Student Performance}{15}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Classification Problem 2: Detecting Pneumonia}{16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Regression Problem: Bitcoin Prices}{16}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Action plan}{17}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Requirements}{19}% 
