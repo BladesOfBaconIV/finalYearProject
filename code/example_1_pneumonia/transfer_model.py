@@ -5,8 +5,11 @@ from keras.layers import Flatten, Dense, Dropout
 from keras.models import Model, Sequential
 from keras.optimizers import Adam
 from keras.losses import binary_crossentropy
+from keras.callbacks import EarlyStopping
 
-import pandas as pd
+from sklearn.utils import class_weight
+import numpy as np
+import pickle as pkl
 
 train, val, test = load_data(img_shape=(224, 224))
 
@@ -19,10 +22,6 @@ vgg_model = Model(vgg.input, output)
 vgg_model.trainable = False
 for layer in vgg_model.layers:
     layer.trainable = False
-
-pd.set_option('max_colwidth', -1)
-layers = [(layer, layer.name, layer.trainable) for layer in vgg_model.layers]
-layer_info = pd.DataFrame(layers, columns=['Layer Type', 'Layer Name', 'Layer Trainable'])
 
 input_shape = vgg_model.output_shape[1]
 
@@ -43,15 +42,27 @@ model.compile(
 
 print(model.summary())
 
-model.fit_generator(
-    train,
-    steps_per_epoch=4000/32,
-    epochs=16,
-    validation_data=val,
-    verbose=1
+class_weights = class_weight.compute_class_weight(
+    'balanced',
+    np.unique(train.classes),
+    train.classes
 )
 
-model.save('example_transfer.h5')
+early_stop = EarlyStopping(patience=3, restore_best_weights=True)
+
+history = model.fit_generator(
+    train,
+    steps_per_epoch=4000 / 32,
+    epochs=32,
+    validation_data=val,
+    validation_steps=1000 / 32,
+    verbose=1,
+    class_weight=class_weights,
+    callbacks=[early_stop]
+)
+
+with open('transfer_hist.pkl', 'wb') as f:
+    pkl.dump(history, f)
 
 score = model.evaluate_generator(test)
 print(f'Loss: {score[0]}, Accuracy: {score[1]}')
