@@ -7,17 +7,21 @@ DATA_DIR = abspath('../../datasets/chest-xray-pneumonia/chest_xray')
 CLASSES = ['NORMAL', 'PNEUMONIA']
 
 
-def load_data(batch_size=32, img_shape=(256, 256)) -> tuple:
+def load_data(batch_size=32, img_shape=(256, 256), cross_val=None, **extra_augmentation) -> tuple:
     """Returns a tuple of (Train, Val, Test) generators for the data
 
+    :param cross_val: Percent of training set to use as cross validation, if None uses 16 validation images
     :param batch_size: Number of images returned by train_gen each iteration
     :param img_shape: shape of the image to be returned (excluding channels)
+    :param **extra_augmentation: Any extra augmentation arguments for training ImageDataGenerator
     :return: (train, val, test)"""
+
+    val_split = 0.0 if cross_val is None else cross_val
 
     train_gen = ImageDataGenerator(
         rescale=1. / 255,
-        horizontal_flip=True,
-        validation_split=0.2
+        validation_split=val_split,
+        **extra_augmentation
     )
     test_gen = ImageDataGenerator(
         rescale=1. / 255
@@ -30,8 +34,12 @@ def load_data(batch_size=32, img_shape=(256, 256)) -> tuple:
     }
 
     train = train_gen.flow_from_directory(f'{DATA_DIR}/train', subset='training', **flow_args)
-    val = train_gen.flow_from_directory(f'{DATA_DIR}/train', subset='validation', **flow_args)
     test = test_gen.flow_from_directory(f'{DATA_DIR}/test', **flow_args)
+    if cross_val is not None:
+        val = train_gen.flow_from_directory(f'{DATA_DIR}/train', subset='validation', **flow_args)
+    else:
+        flow_args['batch_size'] = 16
+        val = test_gen.flow_from_directory(f'{DATA_DIR}/val', **flow_args)
 
     return train, val, test
 
