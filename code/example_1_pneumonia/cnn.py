@@ -4,19 +4,16 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from keras.optimizers import Adam, RMSprop
 from keras.losses import binary_crossentropy
+from keras.callbacks import TensorBoard
 import keras.backend as K
 
 from sklearn.utils.class_weight import compute_class_weight
 import numpy as np
 
-import pickle as pkl
-
-from itertools import cycle
-
 img_shape = (256, 256)
 batch_size = 16
 train, val, test = load_data(img_shape=img_shape, batch_size=batch_size, cross_val=0.2)
-train_aug, val_aug = load_data(
+train_aug, val_aug, _ = load_data(
     img_shape=img_shape,
     batch_size=batch_size,
     width_shift_range=10,
@@ -72,20 +69,31 @@ def make_model(optimizer):
     return model
 
 
-def fit_model(m, t, v):
-    return m.fit_generator(
-        t,
-        steps_per_epoch=2600/batch_size,
-        epochs=24,
-        validation_data=v,
-        validation_steps=1,
-        class_weight=class_weights
-    )
+cnn_no_aug = make_model(Adam())
+cnn_aug = make_model(Adam())
 
+tb_no_aug = TensorBoard(log_dir='./logs/cnn_no_aug')
+tb_aug = TensorBoard(log_dir='./logs/cnn_aug')
 
-models = [make_model(opt) for opt in (Adam(), Adam(), RMSprop(), RMSprop())]
-hists = [fit_model(m, t) for m, (t, v) in zip(models, cycle(((train, val), (train_aug, val_aug))))]
-model_names = ['pure_adam', 'aug_adam', 'pure_rms', 'aug_rms']
+cnn_no_aug.fit_generator(
+    train,
+    steps_per_epoch=4170//batch_size,
+    epochs=24,
+    validation_data=val,
+    validation_steps=1040//batch_size,
+    class_weight=class_weights,
+    callbacks=[tb_no_aug]
+)
 
-with open('cnn_training.pkl', 'wb') as f:
-    pkl.dump(dict(zip(model_names, hists)), f)
+cnn_aug.fit_generator(
+    train_aug,
+    steps_per_epoch=4170//batch_size,
+    epochs=24,
+    validation_data=val_aug,
+    validation_steps=1040//batch_size,
+    class_weight=class_weights,
+    callbacks=[train_aug]
+)
+
+cnn_no_aug.save('cnn_no_aug.h5')
+cnn_aug.save('cnn_aug.h5')
