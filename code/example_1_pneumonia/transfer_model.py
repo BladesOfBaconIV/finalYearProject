@@ -5,14 +5,14 @@ from keras.layers import Flatten, Dense, Dropout
 from keras.models import Model, Sequential
 from keras.optimizers import Adam
 from keras.losses import binary_crossentropy
-from keras.callbacks import ReduceLROnPlateau, TensorBoard
+from keras.callbacks import ReduceLROnPlateau, TensorBoard, EarlyStopping
 import keras.backend as K
 
 from sklearn.utils import class_weight
 import numpy as np
 
 img_shape = (256, 256)
-batch_size = 16
+batch_size = 32
 train, val, test = load_data(
     img_shape=img_shape,
     batch_size=batch_size,
@@ -70,6 +70,7 @@ class_weights = class_weight.compute_class_weight(
 
 reduce_lr = ReduceLROnPlateau(factor=0.1, patience=5, cooldown=1)
 tb = TensorBoard(log_dir='./logs/transfer_1')
+early_stop = EarlyStopping(patience=3, restore_best_weights=True)
 
 history = model.fit_generator(
     train,
@@ -79,7 +80,7 @@ history = model.fit_generator(
     validation_steps=1040//batch_size,
     verbose=1,
     class_weight=class_weights,
-    callbacks=[reduce_lr, tb]
+    callbacks=[reduce_lr, tb, early_stop]
 )
 
 model.save('transfer_1.h5')
