@@ -2,7 +2,7 @@ from explore_dataset import load_data
 
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-from keras.optimizers import Adam, RMSprop
+from keras.optimizers import Adam
 from keras.losses import binary_crossentropy
 from keras.callbacks import TensorBoard
 import keras.backend as K
@@ -84,6 +84,7 @@ cnn_no_aug.fit_generator(
     class_weight=class_weights,
     callbacks=[tb_no_aug]
 )
+cnn_no_aug.save('cnn_no_aug.h5')
 
 cnn_aug.fit_generator(
     train_aug,
@@ -92,8 +93,6 @@ cnn_aug.fit_generator(
     validation_data=val_aug,
     validation_steps=1040//batch_size,
     class_weight=class_weights,
-    callbacks=[train_aug]
+    callbacks=[tb_aug]
 )
-
-cnn_no_aug.save('cnn_no_aug.h5')
 cnn_aug.save('cnn_aug.h5')
