@@ -9,6 +9,7 @@ from keras.callbacks import ReduceLROnPlateau, TensorBoard, EarlyStopping
 import keras.backend as K
 
 from sklearn.utils import class_weight
+from collections import Counter
 import numpy as np
 
 img_shape = (256, 256)
@@ -66,11 +67,15 @@ model.compile(
 
 print(model.summary())
 
-class_weights = class_weight.compute_class_weight(
-    'balanced',
-    np.unique(train.classes),
-    train.classes
-)
+# class_weights = class_weight.compute_class_weight(
+#     'balanced',
+#     np.unique(train.classes),
+#     train.classes
+# )
+
+counter = Counter(train.classes)
+t = 0.4  # do we focus on sensitivity (t = 1), or specificity (t = 0)
+class_weights = {1: (counter[0]/counter[1]) * t}
 
 reduce_lr = ReduceLROnPlateau(factor=0.1, patience=3, cooldown=1)
 tb = TensorBoard(log_dir='./logs/transfer_1')
