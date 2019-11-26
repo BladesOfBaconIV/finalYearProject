@@ -45,6 +45,10 @@ vgg_model.trainable = False
 for layer in vgg_model.layers:
     layer.trainable = False
 
+# For fine tuned model
+# for layer in vgg_model.layers[-5:]:
+#     layer.trainable = True
+
 input_shape = vgg_model.output_shape[1]
 
 model = Sequential()
@@ -68,9 +72,9 @@ class_weights = class_weight.compute_class_weight(
     train.classes
 )
 
-reduce_lr = ReduceLROnPlateau(factor=0.1, patience=5, cooldown=1)
+reduce_lr = ReduceLROnPlateau(factor=0.1, patience=3, cooldown=1)
 tb = TensorBoard(log_dir='./logs/transfer_1')
-early_stop = EarlyStopping(patience=3, restore_best_weights=True)
+early_stop = EarlyStopping(patience=5, restore_best_weights=True)
 
 history = model.fit_generator(
     train,
