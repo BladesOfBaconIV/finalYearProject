@@ -34,7 +34,7 @@ def load_data(batch_size=32, img_shape=(256, 256), cross_val=None, **extra_augme
     }
 
     train = train_gen.flow_from_directory(f'{DATA_DIR}/train', subset='training', **flow_args)
-    test = test_gen.flow_from_directory(f'{DATA_DIR}/test', **flow_args)
+    test = test_gen.flow_from_directory(f'{DATA_DIR}/test', shuffle=False, **flow_args)
     if cross_val is not None:
         val = train_gen.flow_from_directory(f'{DATA_DIR}/train', subset='validation', **flow_args)
     else:
