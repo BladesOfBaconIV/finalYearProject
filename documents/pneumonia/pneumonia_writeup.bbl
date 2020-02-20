@@ -1,0 +1,342 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.0 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{pne-death-rate}{misc}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.erswhitebook.org/chapters/acute-lower-respiratory-infections/}}
+      \field{note}{Accessed: 2020-02-03}
+      \field{title}{The European Lung white book; Respiratory Health and Disease in Europe}
+    \endentry
+    \entry{pne-diagnosis}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3e84475bf70dcceedb9714f067c1d424}{%
+           family={Watkins},
+           familyi={W\bibinitperiod},
+           given={Richard\bibnamedelima R},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=ee3e0c5ab588954a6dbe25a09a4f06f9}{%
+           family={Lemonovich},
+           familyi={L\bibinitperiod},
+           given={Tracy\bibnamedelima L},
+           giveni={T\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{9e94e8b36576eae035ade47d66d495f4}
+      \strng{fullhash}{9e94e8b36576eae035ade47d66d495f4}
+      \strng{bibnamehash}{9e94e8b36576eae035ade47d66d495f4}
+      \strng{authorbibnamehash}{9e94e8b36576eae035ade47d66d495f4}
+      \strng{authornamehash}{9e94e8b36576eae035ade47d66d495f4}
+      \strng{authorfullhash}{9e94e8b36576eae035ade47d66d495f4}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American family physician}
+      \field{number}{11}
+      \field{title}{Diagnosis and management of community-acquired pneumonia in adults}
+      \field{volume}{83}
+      \field{year}{2011}
+      \field{pages}{1299\bibrangedash 1306}
+      \range{pages}{8}
+    \endentry
+    \entry{pne-ml-in-medicine}{article}{}
+      \name{author}{2}{}{%
+        {{hash=960e8d137f8e59f77f16150f4f431841}{%
+           family={Bakator},
+           familyi={B\bibinitperiod},
+           given={Mihalj},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d0d18fb53d58c6b53b6cb65bc927d30e}{%
+           family={Radosav},
+           familyi={R\bibinitperiod},
+           given={Dragica},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Multidisciplinary Digital Publishing Institute}%
+      }
+      \strng{namehash}{5b77c3630fe722f5b939189ea70a1eb2}
+      \strng{fullhash}{5b77c3630fe722f5b939189ea70a1eb2}
+      \strng{bibnamehash}{5b77c3630fe722f5b939189ea70a1eb2}
+      \strng{authorbibnamehash}{5b77c3630fe722f5b939189ea70a1eb2}
+      \strng{authornamehash}{5b77c3630fe722f5b939189ea70a1eb2}
+      \strng{authorfullhash}{5b77c3630fe722f5b939189ea70a1eb2}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Multimodal Technologies and Interaction}
+      \field{number}{3}
+      \field{title}{Deep learning and medical diagnosis: A review of literature}
+      \field{volume}{2}
+      \field{year}{2018}
+      \field{pages}{47}
+      \range{pages}{1}
+    \endentry
+    \entry{pne-dataset}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3afc8b505de8683602b269b824f8f813}{%
+           family={Kermany},
+           familyi={K\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=25b49ae9660c763222a6e0c5e8f355f6}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Kang},
+           giveni={K\bibinitperiod}}}%
+        {{hash=4529d160647c075f4855f57cce9801cf}{%
+           family={Goldbaum},
+           familyi={G\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{57c3511d7fb0527188cd8d3ff2efa7e0}
+      \strng{fullhash}{57c3511d7fb0527188cd8d3ff2efa7e0}
+      \strng{bibnamehash}{57c3511d7fb0527188cd8d3ff2efa7e0}
+      \strng{authorbibnamehash}{57c3511d7fb0527188cd8d3ff2efa7e0}
+      \strng{authornamehash}{57c3511d7fb0527188cd8d3ff2efa7e0}
+      \strng{authorfullhash}{57c3511d7fb0527188cd8d3ff2efa7e0}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mendeley data}
+      \field{title}{Labeled optical coherence tomography (oct) and chest X-ray images for classification}
+      \field{volume}{2}
+      \field{year}{2018}
+    \endentry
+    \entry{cnn-analysis}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=140f3f1af8537ad5e6f9e6ef92c046d8}{%
+           family={Thoma},
+           familyi={T\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Karlsruhe Institute of Technology}%
+      }
+      \list{location}{1}{%
+        {Karlsruhe, Germany}%
+      }
+      \strng{namehash}{140f3f1af8537ad5e6f9e6ef92c046d8}
+      \strng{fullhash}{140f3f1af8537ad5e6f9e6ef92c046d8}
+      \strng{bibnamehash}{140f3f1af8537ad5e6f9e6ef92c046d8}
+      \strng{authorbibnamehash}{140f3f1af8537ad5e6f9e6ef92c046d8}
+      \strng{authornamehash}{140f3f1af8537ad5e6f9e6ef92c046d8}
+      \strng{authorfullhash}{140f3f1af8537ad5e6f9e6ef92c046d8}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{6}
+      \field{title}{Analysis and Optimization of Convolutional Neural NetworkArchitectures}
+      \field{type}{Masters?s Thesis}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb https://martin-thoma.com/msthesis/
+      \endverb
+      \verb{url}
+      \verb https://martin-thoma.com/msthesis/
+      \endverb
+      \keyw{machine learning; artificial neural networks;classification; supervised learning; CNNs}
+    \endentry
+    \entry{cnn-backprop}{article}{}
+      \name{author}{7}{}{%
+        {{hash=6a1aa6b7eab12b931ca7c7e3f927231d}{%
+           family={LeCun},
+           familyi={L\bibinitperiod},
+           given={Yann},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=824ee0660bd2a40e283a9b8266f0868b}{%
+           family={Boser},
+           familyi={B\bibinitperiod},
+           given={Bernhard},
+           giveni={B\bibinitperiod}}}%
+        {{hash=017996bb299557636f8e47759ba29a60}{%
+           family={Denker},
+           familyi={D\bibinitperiod},
+           given={John\bibnamedelima S},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=0444ce878492140cb17d6d4f19c2b24d}{%
+           family={Henderson},
+           familyi={H\bibinitperiod},
+           given={Donnie},
+           giveni={D\bibinitperiod}}}%
+        {{hash=ddaff2b97b0b8bf177545e0a7f694002}{%
+           family={Howard},
+           familyi={H\bibinitperiod},
+           given={Richard\bibnamedelima E},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=494b3ee863ae780ea5237c5b09b80c0e}{%
+           family={Hubbard},
+           familyi={H\bibinitperiod},
+           given={Wayne},
+           giveni={W\bibinitperiod}}}%
+        {{hash=7c31ca2e27cf716eb355090b20ab6455}{%
+           family={Jackel},
+           familyi={J\bibinitperiod},
+           given={Lawrence\bibnamedelima D},
+           giveni={L\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{293101255fd6352249fa8c2c4c99c8fc}
+      \strng{fullhash}{db03602b955b0c9b23b4bd012343619d}
+      \strng{bibnamehash}{db03602b955b0c9b23b4bd012343619d}
+      \strng{authorbibnamehash}{db03602b955b0c9b23b4bd012343619d}
+      \strng{authornamehash}{293101255fd6352249fa8c2c4c99c8fc}
+      \strng{authorfullhash}{db03602b955b0c9b23b4bd012343619d}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neural computation}
+      \field{number}{4}
+      \field{title}{Backpropagation applied to handwritten zip code recognition}
+      \field{volume}{1}
+      \field{year}{1989}
+      \field{pages}{541\bibrangedash 551}
+      \range{pages}{11}
+    \endentry
+    \entry{cnn-image-net}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c5e3a676e2ac1164b3afcd539c131fc9}{%
+           family={Krizhevsky},
+           familyi={K\bibinitperiod},
+           given={Alex},
+           giveni={A\bibinitperiod}}}%
+        {{hash=8d569d1d5b8b5a7836017a98b430f959}{%
+           family={Sutskever},
+           familyi={S\bibinitperiod},
+           given={Ilya},
+           giveni={I\bibinitperiod}}}%
+        {{hash=813bd95fe553e6079cd53a567b238287}{%
+           family={Hinton},
+           familyi={H\bibinitperiod},
+           given={Geoffrey\bibnamedelima E},
+           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{1a23c09aa65b3c2ade45ed18d8127375}
+      \strng{fullhash}{1a23c09aa65b3c2ade45ed18d8127375}
+      \strng{bibnamehash}{1a23c09aa65b3c2ade45ed18d8127375}
+      \strng{authorbibnamehash}{1a23c09aa65b3c2ade45ed18d8127375}
+      \strng{authornamehash}{1a23c09aa65b3c2ade45ed18d8127375}
+      \strng{authorfullhash}{1a23c09aa65b3c2ade45ed18d8127375}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Advances in neural information processing systems}
+      \field{title}{Imagenet classification with deep convolutional neural networks}
+      \field{year}{2012}
+      \field{pages}{1097\bibrangedash 1105}
+      \range{pages}{9}
+    \endentry
+    \entry{keras}{misc}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=14134a39113404b1f80969c9ccc1f71e}{%
+           family={Chollet},
+           familyi={C\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{fullhash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{bibnamehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{authorbibnamehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{authornamehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{authorfullhash}{2f3cf4de7406c8a08275677188d056f8}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://keras.io}}
+      \field{title}{Keras}
+      \field{year}{2015}
+    \endentry
+    \entry{cnn-biology}{article}{}
+      \name{author}{2}{}{%
+        {{hash=bd60e0ff340eedf45ac4f5f2ae90159b}{%
+           family={Hubel},
+           familyi={H\bibinitperiod},
+           given={David\bibnamedelima H},
+           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=9983ff1caee0d9e4db67358c018fc205}{%
+           family={Wiesel},
+           familyi={W\bibinitperiod},
+           given={Torsten\bibnamedelima N},
+           giveni={T\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Wiley Online Library}%
+      }
+      \strng{namehash}{a2b6710b3764273599eb886e1d51d495}
+      \strng{fullhash}{a2b6710b3764273599eb886e1d51d495}
+      \strng{bibnamehash}{a2b6710b3764273599eb886e1d51d495}
+      \strng{authorbibnamehash}{a2b6710b3764273599eb886e1d51d495}
+      \strng{authornamehash}{a2b6710b3764273599eb886e1d51d495}
+      \strng{authorfullhash}{a2b6710b3764273599eb886e1d51d495}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of physiology}
+      \field{number}{1}
+      \field{title}{Receptive fields and functional architecture of monkey striate cortex}
+      \field{volume}{195}
+      \field{year}{1968}
+      \field{pages}{215\bibrangedash 243}
+      \range{pages}{29}
+    \endentry
+    \entry{cnn-depth-conv}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=14134a39113404b1f80969c9ccc1f71e}{%
+           family={Chollet},
+           familyi={C\bibinitperiod},
+           given={Fran{ç}ois},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{14134a39113404b1f80969c9ccc1f71e}
+      \strng{fullhash}{14134a39113404b1f80969c9ccc1f71e}
+      \strng{bibnamehash}{14134a39113404b1f80969c9ccc1f71e}
+      \strng{authorbibnamehash}{14134a39113404b1f80969c9ccc1f71e}
+      \strng{authornamehash}{14134a39113404b1f80969c9ccc1f71e}
+      \strng{authorfullhash}{14134a39113404b1f80969c9ccc1f71e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the IEEE conference on computer vision and pattern recognition}
+      \field{title}{Xception: Deep learning with depthwise separable convolutions}
+      \field{year}{2017}
+      \field{pages}{1251\bibrangedash 1258}
+      \range{pages}{8}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
