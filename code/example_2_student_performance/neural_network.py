@@ -1,122 +1,108 @@
 import numpy as np
 import tensorflow as tf
-import tensorflow_probability as tfp
 import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-
 from explore_dataset import load_preproccessed_dataset
+from bfgs_objects import BfgsMlp, BfgsTrainingMonitor
+
 from collections import defaultdict
 
+# use float64 by default
+tf.keras.backend.set_floatx("float64")
 
-class BfgsTrainingMonitor:
+# prepare training data
+(X, y), _ = load_preproccessed_dataset(test_split=0.0, include_grades=True)
+num_classes = 5
+num_features = X.shape[1]
 
-    def __init__(self):
-        self.history = defaultdict(list)
+standardise = StandardScaler()
+X = standardise.fit_transform(X)
 
-    def monitor_loss(self, func):
-        def wrapper(*args, **kwargs):
-            loss, grads = func(*args, **kwargs)
-            self.history['loss'].append(loss)
-            return loss, grads
-        return wrapper
+# Labels need to be 0-4, not 4-5 for categorical
+y -= 1
+y = tf.keras.utils.to_categorical(y).astype(np.float64)
 
+# Tuning H
+accuracies = defaultdict(list)
+for H in range(0, 10, 2):  # check H in {0, 2, 4, 6, 8}
+    for i in range(10):  # 10-fold cross-validation
+        print(f'H: {H}, Fold {i+1}')
+        train_x, test_x, train_y, test_y = train_test_split(X, y, test_size=0.1)
 
-class BfgsMlp(tf.keras.Sequential):
+        model = BfgsMlp(n_input=num_features, n_hidden=H, n_output=num_classes)
+        model.fit(train_x, train_y, max_iterations=100)
+        test_acc = model.accuracy(test_x, test_y)
 
-    def __init__(self, n_input, n_hidden, n_output, loss=tf.keras.losses.MeanSquaredError()):
-        super().__init__([
-            tf.keras.Input(shape=(n_input,)),
-            tf.keras.layers.Dense(n_hidden, 'relu'),
-            tf.keras.layers.Dense(n_output, 'softmax'),
-        ])
-        self._trainable_shapes, self._indexes_1d, self._partitions_1d = self._make_1d_mapping()
-        self.loss = loss
+        accuracies[H].append(test_acc)
 
-    def fit(self, X, y, optimizer=tfp.optimizer.bfgs_minimize, **kwargs):
-        monitor = BfgsTrainingMonitor()
-        val_and_grad_func = self._make_vals_and_grad_func(X, y)
-        result = optimizer(
-            val_and_grad_func,  # values_and_grad_func
-            self._get_weights_1d(),     # initial_position
-            **kwargs
-        )
-        self._update_weights(result.position)
-        return monitor
+accuracies = {H: sum(accs)/len(accs) for H, accs in accuracies.items()}
+for H, acc in accuracies.items():
+    print(f'Average accuracy for H = {H}: {acc*100:.2f}%')
 
-    def _make_vals_and_grad_func(self, X, y):
-        @tf.function
-        def values_and_grads(weights_1d):
-            with tf.GradientTape() as tape:
-                self._update_weights(weights_1d)
-                loss_value = self.loss(self(X, training=True), y)
+# Once best H value is found make a model with this H and monitor training to check for over-fitting
+train_x, test_x, train_y, test_y = train_test_split(X, y, test_size=0.1)
+best_H = max(accuracies, key=accuracies.get)
+metrics = ['accuracy']
 
-            # calculate gradients and convert to 1D tf.Tensor
-            grads = tape.gradient(loss_value, self.trainable_variables)
-            grads = tf.dynamic_stitch(self._indexes_1d, grads)
-            return loss_value, grads
-        return values_and_grads
+model_opt_H = BfgsMlp(num_features, best_H, num_classes)
+model_opt_H.compile(  # model needs to be compiled for monitor to use evaluate
+    loss=model_opt_H.loss,
+    metrics=metrics
+)
 
-    def _update_weights(self, weights_1d):
-        weights_each_layer = tf.dynamic_partition(weights_1d, self._partitions_1d, len(self._indexes_1d))
-        for layer, (weights, shape) in enumerate(zip(weights_each_layer, self._trainable_shapes)):
-            self.trainable_variables[layer].assign(tf.reshape(weights, shape))
+data = {
+    'training': (train_x, train_y),
+    'validation': (test_x, test_y),
+}
+monitor = BfgsTrainingMonitor(model_opt_H, data, metrics)
+model_opt_H.fit(train_x, train_y, monitor=monitor, max_iterations=100)
 
-    def _get_weights_1d(self):
-        return tf.dynamic_stitch(self._indexes_1d, self.trainable_variables)
+plt.figure(1)
+plt.plot(monitor.history['training_loss'])
+plt.plot(monitor.history['validation_loss'])
+plt.legend(["Training loss", "Validation loss"])
+plt.title("Training vs. Validation Loss")
+plt.xlabel("No. calls to val_and_grad_func")
+plt.ylabel("Loss")
 
-    def _make_1d_mapping(self):
-        trainable_shapes = tf.shape_n(self.trainable_variables)
+plt.figure(2)
+plt.plot(monitor.history['training_accuracy'])
+plt.plot(monitor.history['validation_accuracy'])
+plt.legend(["Training accuracy", "Validation Accuracy"])
+plt.title("Training vs. Validation Accuracy")
+plt.xlabel("No. calls to val_and_grad_func")
+plt.ylabel("Accuracy")
 
-        indexes = []  # indexes to map from 1D tensor to original shapes
-        partitions = []  # which layer each param in 1D tensor should be mapped to
+plt.show()
 
-        i = 0
-        for layer, shape in enumerate(trainable_shapes):
-            num_values = np.product(shape)  # number of trainable params in layer
-            indexes.append(tf.reshape(tf.range(i, i + num_values), shape))
-            partitions.extend([layer] * num_values)
-            i += num_values
+# Once best number of epochs found train models with best H and epochs
+min_loss = np.argmin(monitor.history["validation_loss"])//3
+print(f'Min loss at {min_loss} epochs')
 
-        return trainable_shapes, indexes, partitions
+# Final models
+models = []
+for i in range(5):
+    train_x, val_x, train_y, val_y = train_test_split(X, y, test_size=0.1)
 
+    model = BfgsMlp(num_features, best_H, num_classes)
+    model.fit(train_x, train_y, max_iterations=min_loss.astype('int32'))
+    test_acc = model.accuracy(val_x, val_y)
 
-if __name__ == "__main__":
-    # use float64 by default
-    tf.keras.backend.set_floatx("float64")
+    models.append((model, test_acc))
 
-    # prepare training data
-    (X, y), _ = load_preproccessed_dataset(test_split=0.0, include_grades=True)
-    num_classes = 5
+# test best model on maths data
+best_model, acc = max(models, key=lambda x: x[1])
 
-    standardise = StandardScaler()
-    X = standardise.fit_transform(X)
+(maths_x, maths_y), _ = load_preproccessed_dataset(test_split=0.0, subject='mat', include_grades=True)
+# Use the StandardScaler fitted on the Portuguese data
+maths_x = standardise.transform(maths_x)
 
-    y -= 1
-    y = tf.keras.utils.to_categorical(y).astype(np.float64)
+# Labels need to be 0-4, not 4-5 for categorical
+maths_y -= 1
+maths_y = tf.keras.utils.to_categorical(maths_y).astype(np.float64)
 
-    accuracies = defaultdict(list)
+maths_acc = best_model.accuracy(maths_x, maths_y)
 
-    m = BfgsMlp(32, 4, 5)
-    hist = m.fit(X, y, max_iterations=100)
-    plt.plot(hist.history['loss'])
-    plt.show()
-
-    # for H in range(0, 10, 2):
-    #     for i in range(10):
-    #         print(f'H: {H}, Fold {i+1}')
-    #         train_x, test_x, train_y, test_y = train_test_split(X, y, test_size=0.1)
-    #
-    #         model = BfgsMlp(n_input=X.shape[1], n_hidden=H, n_output=num_classes)
-    #
-    #         model.fit(train_x, train_y, max_iterations=100)
-    #
-    #         test_y = np.argmax(test_y, axis=1)
-    #         test_y_hat = np.argmax(model.predict(test_x), axis=1)
-    #         test_acc = sum(test_y == test_y_hat)/len(test_y)
-    #
-    #         accuracies[H].append(test_acc)
-
-for H, accs in accuracies.items():
-    print(f'Average accuracy for H = {H}: {sum(accs)/len(accs)}')
+print(f'Accuracy on maths data: {maths_acc*100:.2f}%')

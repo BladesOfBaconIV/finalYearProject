@@ -2,7 +2,6 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 from collections import Counter
 
@@ -48,7 +47,7 @@ def create_preprocessed_csv(*, subject='por'):
 
 def load_preproccessed_dataset(test_split=0.1, *, subject='por', include_grades=False):
     if not exists(f'{DATA_DIR}/student-{subject}-processed.csv'):
-        create_preprocessed_csv(file=f'student-{subject}')
+        create_preprocessed_csv(subject=subject)
     df = pd.read_csv(f'{DATA_DIR}/student-{subject}-processed.csv', delimiter=';')
     feature_cut_off = 32 if include_grades else 30  # where to separate the features and the labels
     training_cut_off = int(len(df.index) * (1.0 - test_split))
