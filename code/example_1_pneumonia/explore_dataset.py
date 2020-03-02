@@ -50,7 +50,7 @@ def visualise() -> None:
     p = np.where(train_y == 1)[0]
     n = np.where(train_y == 0)[0]
 
-    fig, (ax1, ax2) = plt.subplots(2, 1, sharex=True)
+    fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True)
 
     ax1.imshow(train_x[n[0]])
     ax1.axis('off')
