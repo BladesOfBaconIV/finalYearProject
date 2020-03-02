@@ -38,10 +38,6 @@ def create_preprocessed_csv(*, subject='por'):
     le = LabelEncoder()
     for col in NON_NUMERIC_COLUMNS:
         df[col] = le.fit_transform(df[col])
-    # scale outputs to between 1 and 0
-    scaler = MinMaxScaler()
-    df = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
-    df['G3'] = df['G3'] * 4 + 1  # convert back to labels [0, 1, 2, 3, 4] from [0, 0.25, 0.5, 0.75, 1]
     df.to_csv(f'{DATA_DIR}/student-{subject}-processed.csv', sep=';', index=False)
 
 
