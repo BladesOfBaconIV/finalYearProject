@@ -1,13 +1,3 @@
-misc{example-github-citation,
-  author = {John Doe},
-  title = {Project Title},
-  year = {20XX},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/username/project-title}},
-  commit = {4f57d6a0e4c030202a07a60bc1bb1ed1544bf679}
-}
-
 % ----------
 % ML frameworks
 % ----------
@@ -90,13 +80,58 @@ author={Abadi, Mart{\'\i}n and Agarwal, Ashish and Barham, Paul and Brevdo, Euge
   year={2010}
 }
 
-@article{pca-choosing,
+@article{pca-choosing-explained,
   title={Choosing the right number of components or factors in PCA and EFA},
   author={Brown, J},
   journal={JALT Testing \& Evaluation SIG Newsletter},
   volume={13},
   number={2},
   year={2009}
+}
+
+@article{pca-choosing,
+  title={Stopping rules in principal components analysis: a comparison of heuristical and statistical approaches},
+  author={Jackson, Donald A},
+  journal={Ecology},
+  volume={74},
+  number={8},
+  pages={2204--2214},
+  year={1993},
+  publisher={Wiley Online Library}
+}
+
+@inproceedings{data-augmentation,
+  title={Understanding data augmentation for classification: when to warp?},
+  author={Wong, Sebastien C and Gatt, Adam and Stamatescu, Victor and McDonnell, Mark D},
+  booktitle={2016 international conference on digital image computing: techniques and applications (DICTA)},
+  pages={1--6},
+  year={2016},
+  organization={IEEE}
+}
+
+@article{image-augmentation,
+  title={The effectiveness of data augmentation in image classification using deep learning},
+  author={Perez, Luis and Wang, Jason},
+  journal={arXiv preprint arXiv:1712.04621},
+  year={2017}
+}
+
+@inproceedings{image-aug-over-fitting,
+  title={Best practices for convolutional neural networks applied to visual document analysis.},
+  author={Simard, Patrice Y and Steinkraus, David and Platt, John C and others},
+  booktitle={Icdar},
+  volume={3},
+  number={2003},
+  year={2003}
+}
+
+@misc{dropout,
+  title={System and method for addressing overfitting in a neural network},
+  author={Hinton, Geoffrey E and Krizhevsky, Alexander and Sutskever, Ilya and Srivastva, Nitish},
+  year={2016},
+  month=aug # "~2",
+  publisher={Google Patents},
+  note={US Patent 9,406,017}
 }
 
 % ----------
@@ -194,6 +229,30 @@ author={Abadi, Mart{\'\i}n and Agarwal, Ashish and Barham, Paul and Brevdo, Euge
   year={2017}
 }
 
+@article{vgg16,
+  title={Very deep convolutional networks for large-scale image recognition},
+  author={Simonyan, Karen and Zisserman, Andrew},
+  journal={arXiv preprint arXiv:1409.1556},
+  year={2014}
+}
+
+@article{cnn-vgg16-for-pne,
+  title={Visualization and interpretation of convolutional neural network predictions in detecting pneumonia in pediatric chest radiographs},
+  author={Rajaraman, Sivaramakrishnan and Candemir, Sema and Kim, Incheol and Thoma, George and Antani, Sameer},
+  journal={Applied Sciences},
+  volume={8},
+  number={10},
+  pages={1715},
+  year={2018},
+  publisher={Multidisciplinary Digital Publishing Institute}
+}
+
+@misc{cnn-simple-kaggle,
+	title={Keras-NN \| X-Ray \| Predict pneumonia \| 86.54\%},
+	url={https://www.kaggle.com/kosovanolexandr/keras-nn-x-ray-predict-pneumonia-86-54},
+	note={Accessed 07/11/2019}
+}
+
 % ----------
 % RF\DT
 % ----------
@@ -272,6 +331,7 @@ author={Abadi, Mart{\'\i}n and Agarwal, Ashish and Barham, Paul and Brevdo, Euge
 % ----------
 % Pneumonia sources
 % ----------
+
 @misc{pne-death-rate,
 	title={The European Lung white book; Respiratory Health and Disease in Europe},
 	howpublished={\url{https://www.erswhitebook.org/chapters/acute-lower-respiratory-infections/}},
@@ -307,6 +367,35 @@ author={Abadi, Mart{\'\i}n and Agarwal, Ashish and Barham, Paul and Brevdo, Euge
   year={2018}
 }
 
+@inproceedings{breast-cancer-detection,
+  title={Elastic deformations for data augmentation in breast cancer mass detection},
+  author={Castro, Eduardo and Cardoso, Jaime S and Pereira, Jose Costa},
+  booktitle={2018 IEEE EMBS International Conference on Biomedical \& Health Informatics (BHI)},
+  pages={230--234},
+  year={2018},
+  organization={IEEE}
+}
+
+@inproceedings{chest-xray-augmentation,
+  title={Chest X-ray analysis of tuberculosis by deep learning with segmentation and augmentation},
+  author={Stirenko, Sergii and Kochura, Yuriy and Alienin, Oleg and Rokovyi, Oleksandr and Gordienko, Yuri and Gang, Peng and Zeng, Wei},
+  booktitle={2018 IEEE 38th International Conference on Electronics and Nanotechnology (ELNANO)},
+  pages={422--428},
+  year={2018},
+  organization={IEEE}
+}
+
+@article{cad-wavelet,
+  title={Computer-aided diagnosis in chest radiography for detection of childhood pneumonia},
+  author={Oliveira, Leandro Lu{\'\i}s Galdino and e Silva, Simonne Almeida and Ribeiro, Luiza Helena Vilela and de Oliveira, Renato Maur{\'\i}cio and Coelho, Clarimar Jos{\'e} and Andrade, Ana Lucia SS},
+  journal={International journal of medical informatics},
+  volume={77},
+  number={8},
+  pages={555--564},
+  year={2008},
+  publisher={Elsevier}
+}
+
 % ----------
 % Student Example
 % ----------
@@ -315,4 +404,54 @@ author={Abadi, Mart{\'\i}n and Agarwal, Ashish and Barham, Paul and Brevdo, Euge
   author={Cortez, Paulo and Silva, Alice Maria Gon{\c{c}}alves},
   year={2008},
   publisher={EUROSIS-ETI}
+}
+
+% ----------
+% Misc
+% ----------
+
+@misc{issue6499,
+  title={Evaluate\_generator produces wrong accuracy scores? \#6499},
+  url={https://github.com/keras-team/keras/issues/6499},
+  type={Open Issue}
+}
+
+@misc{issue3477,
+  title={Why the return of predict and predict generator are different? \#3477},
+  url={https://github.com/keras-team/keras/issues/3477},
+  type={Closed Issue}
+}
+
+@misc{issue11754,
+	title={Correct use of fit\_generator, predict\_generator, and evaluate\_generator \#11754},
+	url={https://github.com/keras-team/keras/issues/11754},
+	type={Open Issue}
+}
+
+
+% ---------
+% problem 3 
+% ---------
+
+@misc{bitcoin-data,
+	title={Bitcoin Historical Data},
+	url={https://www.kaggle.com/mczielinski/bitcoin-historical-data},
+	note={Available under CC 4.0}
+}
+
+@inproceedings{lstm-use-1,
+  title={Stock price prediction using LSTM, RNN and CNN-sliding window model},
+  author={Selvin, Sreelekshmy and Vinayakumar, R and Gopalakrishnan, EA and Menon, Vijay Krishna and Soman, KP},
+  booktitle={2017 international conference on advances in computing, communications and informatics (icacci)},
+  pages={1643--1647},
+  year={2017},
+  organization={IEEE}
+}
+
+@inproceedings{lstm-use-2,
+  title={Comparison of arima time series model and lstm deep learning algorithm for bitcoin price forecasting},
+  author={Karakoyun, ES and Cibikdiken, AO},
+  booktitle={The 13th multidisciplinary academic conference in prague 2018 (the 13th mac 2018)},
+  pages={171--180},
+  year={2018}
 }
